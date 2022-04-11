@@ -1,62 +1,44 @@
-import React from 'react';
-import axios from "axios";
+import React, {useEffect, useState} from "react"
 
-function App() {
+const App = () => {
+    const [data, setData] = useState([])
 
-    const tab = (
-        <table>
-            <tbody>
-            <tr>
-                <th>№ зачетки</th>
-                <th>ФИО</th>
-                <th>№ группы</th>
-                <th>Кафедра</th>
-                <th>Факультет</th>
-            </tr>
-            </tbody>
-        </table>
-    );
-     fetch('./src/GetJson.php')
-         .then(response => response.json())
-         .then(data => console.log(data));
-   // axios({
-   //     method: 'POST',
-   //     url: './src/GetJson.php',
-   //     data: [
-   //              <tr>
-   //             <td>'RECORD_BOOK'</td>
-   //             <td>'FIO'</td>
-   //             <td>'GROUP_NUMBER'</td>
-   //             <td>'CHAIR'</td>
-   //             <td>'FACULTY'</td>
-   //         </tr>
-   //          ]
-   // })
-   //  axios({
-   //      method: 'get',
-   //      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-   //      url: './src/GetJson.php',
-   //      data: [
-   //          <tr>
-   //              <td>'RECORD_BOOK'</td>
-   //              <td>'FIO'</td>
-   //              <td>'GROUP_NUMBER'</td>
-   //              <td>'CHAIR'</td>
-   //              <td>'FACULTY'</td>
-   //          </tr>
-   //      ]
-            // .then(function (response) {
-            //     console.log(response);
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
-            // })
-    //})
+    const fetchData = () => {
+        fetch("./src/GetJSON.php")
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                setData(data)
+            })
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
     return (
         <div>
-            {tab}
+            <table>
+                <tr>
+                    <th>№ зачетки</th>
+                    <th>ФИО</th>
+                    <th>№ группы</th>
+                    <th>Кафедра</th>
+                    <th>Факультет</th>
+                </tr>
+                {data.map(row => (
+                    <tr>
+                        <td>{row['RECORD_BOOK']}</td>
+                        <td>{row['FIO']}</td>
+                        <td>{row['GROUP_NUMBER']}</td>
+                        <td>{row['CHAIR']}</td>
+                        <td>{row['FACULTY']}</td>
+                    </tr>
+                ))}
+            </table>
         </div>
-    );
+    )
 }
 
 export default App;
