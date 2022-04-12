@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react"
+import RowTable from "./components/rowTable";
+
 
 const App = () => {
     const [data, setData] = useState([])
@@ -29,6 +31,7 @@ const App = () => {
                 </tr>
                 {data.map(row => (
                     <tr>
+                        <RowTable/>
                         <td>{row['RECORD_BOOK']}</td>
                         <td>{row['FIO']}</td>
                         <td>{row['GROUP_NUMBER']}</td>
