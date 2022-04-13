@@ -2,7 +2,7 @@
   "name": "table",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yandex.ru/table1",
+  "homepage": "https://localhost/build/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",

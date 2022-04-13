@@ -1,15 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const CellTable = ({row}) => {
-    const [state, setState] = useState(row)
+const CellTable = ({cellValue}) => {
+
     return (
-        <div>
-
-            <input
-            value={state}
-            onChange={({target}) => setState(target.value)}
-            type="text"/>
-        </div>
+        <td>
+            {cellValue}
+        </td>
     );
 };
 
