@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react"
 import RowTable from "./components/rowTable";
+import HeadTable from "./components/headTable";
+import CellTable from "./components/cellTable";
 
 
 const App = () => {
@@ -22,21 +24,15 @@ const App = () => {
     return (
         <div>
             <table>
-                <tr>
-                    <th>№ зачетки</th>
-                    <th>ФИО</th>
-                    <th>№ группы</th>
-                    <th>Кафедра</th>
-                    <th>Факультет</th>
-                </tr>
+                <HeadTable/>
                 {data.map(row => (
                     <tr>
-                        <RowTable/>
-                        <td>{row['RECORD_BOOK']}</td>
-                        <td>{row['FIO']}</td>
-                        <td>{row['GROUP_NUMBER']}</td>
-                        <td>{row['CHAIR']}</td>
-                        <td>{row['FACULTY']}</td>
+                        <CellTable cellValue = {row['FIO']}/>
+                        {/*<td>{row['RECORD_BOOK']}</td>*/}
+                        {/*<td>{row['FIO']}</td>*/}
+                        {/*<td>{row['GROUP_NUMBER']}</td>*/}
+                        {/*<td>{row['CHAIR']}</td>*/}
+                        {/*<td>{row['FACULTY']}</td>*/}
                     </tr>
                 ))}
             </table>
